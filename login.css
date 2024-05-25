@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 70vh;
+    width: 100%;
+}
+
+.signin-form h1 {
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 16px;
+    color: white; /* Set text color */
+}
+
+.signin-form {
+    width: 500px;
+    background-color: rgba(0, 0, 0, 0.935);
+    border-radius: 5px;
+    padding: 3.5rem;
+    margin-top: -100px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+    width: 100%;
+}
+
+.text-box {
+    padding: 10px;
+}
+
+.button-64 {
+    align-items: center;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    max-width: 500px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-left: 5px;
+}
+
+.button-64:active,
+.button-64:hover {
+    outline: 0;
+}
+
+.button-64 span {
+    background-color: rgb(5, 6, 45);
+    padding: 16px 28px;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+}
+
+.button-64:hover span {
+    background: none;
+}
+
+@media (min-width: 768px) {
+    .button-64 {
+        font-size: 24px;
+        min-width: 196px;
+    }
+}
+
+.text-field {
+    position: relative;
+    margin: 10px 2.5px 20px 2.5px;
+}
+
+input {
+    display: inline-block;
+    font-size: 25px;
+    width: 390px;
+    border: thin solid #fafafa;
+    border-bottom: solid medium #999;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.935);
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    border: thin solid whitesmoke;
+    border-bottom: solid medium whitesmoke;
+    background-color: rgba(0, 0, 0, 0.935);
+}
+
+label {
+    color: #999;
+    font-size: 20px;
+    position: absolute;
+    pointer-events: none;
+    left: 10px;
+    top: 10px;
+    transition: 0.2s;
+}
+
+input:focus ~ label, input:valid ~ label {
+    top: -10px;
+    left: 15px;
+    font-size: 15px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.935);
+    padding:0 5px 0 5px;
+}
+
+.signin-form a {
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+    border-bottom: 2px solid transparent; /* Add an underline effect */
+    transition: border-color 0.3s ease; /* Add transition effect for underline */
+    display: inline-block; /* Ensure links are displayed inline */
+    margin-right: 10px; /* Add space between links */
+}
+
+.signin-form a:hover {
+    border-color: #ffffff; /* Change underline color on hover */
+}
+
+.signin-form .home {
+    margin-left: 300px; /* Adjust margin for the "Home" link */
+}

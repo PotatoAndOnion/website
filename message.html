@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Application</title>
+    <style>
+        .profile-picture {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .display-name {
+            font-weight: bold;
+        }
+        .message {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <select id="user-select">
+            <option value="">Select a user</option>
+        </select>
+        <button id="start-chat-button">Start Chat</button>
+    </div>
+    <div id="chat-container" style="display:none;">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type a message">
+        <button id="send-button">Send</button>
+    </div>
+    <script type="module" src="message.js"></script>
+</body>
+</html>
