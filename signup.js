@@ -61,7 +61,7 @@ registrationForm.addEventListener('submit', async (e) => {
     await setDoc(doc(firebaseFirestore, 'users', user.uid), {
       displayName: displayName,
       profilePicUrl: profilePicUrl,
-      uid: user.uid // Storing UID
+      uid: user.uid
     });
 
     console.log('User signed up successfully');

@@ -1,3 +1,11 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+
+
 /* Header */
 .top-navbar{
     width: 100%;
@@ -19,6 +27,7 @@
 }
 .logo{
     color: white;
+    text-decoration: none;
 }
 .logo:hover{
     cursor: pointer;

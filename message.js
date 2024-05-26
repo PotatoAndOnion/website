@@ -1,19 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
-import { getDatabase, ref, push, set, onChildAdded } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
+import { getDatabase, ref, push, set, onChildAdded, get } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
 import { getFirestore, doc, getDocs, collection, getDoc } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+import { firebaseConfig } from "./config.js";
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDlG6p7VCEP6Q3XI8J06Whk7ajQChAUUPU",
-  authDomain: "a-project-1c132.firebaseapp.com",
-  databaseURL: "https://a-project-1c132-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "a-project-1c132",
-  storageBucket: "a-project-1c132.appspot.com",
-  messagingSenderId: "171458035988",
-  appId: "1:171458035988:web:bc81149cd135b5ebcd8201",
-  measurementId: "G-17SP4V15VV"
-};
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
@@ -65,7 +55,8 @@ function startChat() {
     selectedUserId = userSelect.value;
     chatId = generateChatId(currentUserId, selectedUserId);
     chatContainer.style.display = 'block';
-    listenForMessages();
+    clearMessages();
+    loadMessages();
 }
 
 // Send message function
@@ -80,6 +71,33 @@ function sendMessage() {
         });
         messageInput.value = '';
     }
+}
+
+// Clear chat window
+function clearMessages() {
+    messagesDiv.innerHTML = '';
+}
+
+// Load existing messages
+async function loadMessages() {
+    const messagesRef = ref(database, `chats/${chatId}/messages`);
+    const messagesSnapshot = await get(messagesRef);
+    messagesSnapshot.forEach(async (snapshot) => {
+        const message = snapshot.val();
+        const senderRef = doc(firestore, 'users', message.sender);
+        try {
+            const senderSnap = await getDoc(senderRef);
+            if (senderSnap.exists()) {
+                const sender = senderSnap.data();
+                displayMessage(sender.displayName, sender.profilePicUrl, message.text);
+            } else {
+                console.error('Sender document does not exist:', message.sender);
+            }
+        } catch (error) {
+            console.error('Error getting sender document:', error);
+        }
+    });
+    listenForMessages();
 }
 
 // Listen for new messages

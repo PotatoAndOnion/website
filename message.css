@@ -1,154 +1,68 @@
+/* styles.css */
 body {
     font-family: Arial, sans-serif;
-    background-color: #fafafa;
 }
 
-.messaging-container {
-    max-width: 600px;
-    margin: 80px auto;
-    padding: 20px;
-    background-color: #fff; /* Add background color */
-    border-radius: 10px; /* Add border radius */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
-}
-
-.message-thread {
-    overflow-y: auto;
-    max-height: 400px;
-    margin-bottom: 20px;
-    padding: 0 20px; /* Add padding to create a gap in the middle */
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Add gap between chat bubbles */
-}
-
-.other-person-message {
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 20px 20px 20px 5px;
-    max-width: 80%;
-    word-wrap: break-word;
-}
-.own-message {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 20px 20px 5px 20px;
-    max-width: 80%;
-    word-wrap: break-word;
-    align-self: flex-end;
-}
-
-.message-input {
-    display: flex;
-}
-
-.message-input textarea {
-    flex-grow: 1;
-    resize: none;
-    padding: 10px;
-    border-radius: 5px;
+#chat-container {
+    display: none;
     border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+    width: 400px;
+    height: 500px;
+    overflow-y: auto;
+}
+
+#messages {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.message img.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     margin-right: 10px;
 }
 
-.message-input button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-}
-
-
-
-
-.top-navbar, .header {
-    background: linear-gradient(135deg, #007bff, #00bfff);
-}
-
-
-.top-navbar {
-    width: 100%;
-    background: #007bff;
-    padding: 0.7rem 20px; /* Add padding to the left and right sides */
-    position: fixed;
-    top: 0;
-    z-index: 10;
-    margin-left: -10px;
-}
-.top-navbar .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.top-navbar .left-section {
-    display: flex;
-    align-items: center;
-}
-
-.top-navbar .logo {
-    margin: 0;
-    margin-right: 20px;
-    font-size: 24px; /* Increase font size */
+.message .display-name {
     font-weight: bold;
-    color: #fff; /* Set text color to white */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
-    transition: color 0.3s, text-shadow 0.3s; /* Add transition effects */
+    margin-right: 5px;
+}
+
+.message span {
+    display: block;
+}
+
+.message.user {
+    background-color: #d0e7ff; /* Light blue */
+    align-self: flex-end;
+}
+
+.message.other {
+    background-color: #f0f0f0; /* Light gray */
+}
+
+#message-input {
+    width: calc(100% - 50px);
+    margin-right: 10px;
+    padding: 10px;
+}
+
+#send-button {
+    padding: 10px;
     cursor: pointer;
 }
-.top-navbar .logo:hover {
-    color: #ccf; /* Change text color on hover */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Enhance text shadow on hover */
-}
 
-.top-navbar .search-form {
-    margin-right: 20px;
-    background: hsl(252, 30%, 100%);
-    border-radius: 2rem;
-    padding: 0.1rem 1rem;
-}
-
-.top-navbar .search-form input[type="text"] {
-    background: transparent;
-    width: 25vw;
-    margin-left: 1rem;
-    font-size: 0.9rem;
-    color: black;
-    border: none;
-}
-
-.top-navbar .search-form button {
-    background-color: #0056b3;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 6px 15px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.top-navbar .search-form button:hover {
-    background-color: #004080;
-}
-
-.top-navbar .fa-user {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 26px;
-    transition: color 0.3s;
-}
-
-.top-navbar .fa-user:hover {
-    color: #ccf;
-    cursor: pointer;
-}
-.home-link{
-    text-decoration: none;
+#user-select {
+    margin-bottom: 10px;
 }

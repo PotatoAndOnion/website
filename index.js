@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 import {getAuth, signOut, onAuthStateChanged,} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import {getFirestore, collection, addDoc, getDocs, getDoc, deleteDoc, doc} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-import {getStorage, ref} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+import {getStorage, ref, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -19,13 +19,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
+
 let uid;
 
 
 document.addEventListener('DOMContentLoaded', () => {
   onAuthStateChanged(auth, async (user) => {
     if (user) {
-      uid = user.uid; // Set the global uid variable
+      uid = user.uid;
       await renderPost();
     } else {
       window.location.href = 'login.html';
@@ -87,6 +89,7 @@ const renderPost = async () => {
     postDiv.className = "postCard";
     postDiv.innerHTML = `
       <div class="post-header">
+        <img src="${userData.profilePicUrl}" alt="Profile Picture">
         <h2>${userData.displayName}</h2>
         <p>Posted ${hoursDiff} hours ago</p>
       </div>
