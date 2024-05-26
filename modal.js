@@ -68,10 +68,3 @@ window.addEventListener("click", function(event) {
       document.getElementById("updateModal").style.display = "none";
   }
 });
-
-// // Open modal when clicking on "Post" link in navbar
-// document.getElementById("openUpdateModal").addEventListener("click", function(event) {
-//   event.preventDefault(); 
-//   console.log("testing");
-//   openUpdateModal();
-// });
