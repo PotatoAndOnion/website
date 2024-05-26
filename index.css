@@ -268,36 +268,21 @@ body {
   .modal-content button:hover {
     background-color: #0056b3;
   }
-  
-
-
-  
-/* #logoutBtn:hover {
+#logoutBtn:hover {
     background-color: #d32f2f;
 }
 
-.left-sidebar form input[type="text"],
-.right-sidebar form input[type="text"] {
-    width: calc(100% - 20px);
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-.left-sidebar form button,
-.right-sidebar form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
-
-.left-sidebar form button:hover,
-.right-sidebar form button:hover {
-    background-color: #0056b3;
-} */

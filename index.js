@@ -1,26 +1,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 import {getAuth, signOut, onAuthStateChanged,} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import {getFirestore, collection, addDoc, getDocs, getDoc, deleteDoc, doc} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import {getFirestore, collection, addDoc, getDocs, getDoc, deleteDoc, doc, updateDoc} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import {getStorage, ref, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
-
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDlG6p7VCEP6Q3XI8J06Whk7ajQChAUUPU",
-  authDomain: "a-project-1c132.firebaseapp.com",
-  projectId: "a-project-1c132",
-  storageBucket: "a-project-1c132.appspot.com",
-  messagingSenderId: "171458035988",
-  appId: "1:171458035988:web:bc81149cd135b5ebcd8201",
-  measurementId: "G-17SP4V15VV"
-};
+import { firebaseConfig } from "./config.js";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
-
 let uid;
 
 
@@ -71,18 +60,18 @@ const renderPost = async () => {
           console.log("Fetched user data:", userData);
         } else {
           console.error("No user data found for userId:", post.userId);
-          continue; // Skip rendering this post if user data is not found
+          continue;
         }
       } catch (error) {
         console.error("Error fetching user data for userId:", post.userId, error);
-        continue; // Skip rendering this post if there's an error fetching user data
+        continue;
       }
     }
 
     let delElement =
       uid === post.userId
         ? `<button class="deleteBtn" postId=${docSnapshot.id}>Delete</button>
-           <a href="update.html?id=${docSnapshot.id}"><button>Update</button></a>`
+        <button onclick="openUpdateModal('${docSnapshot.id}')">Update</button>`
         : "";
     
     let postDiv = document.createElement("div");
@@ -127,27 +116,38 @@ if (auth.currentUser) {
 
 
 // Event listener for adding a new post
-document.getElementById("addPost").addEventListener("click", function (e) {
+document.getElementById("addPost").addEventListener("click",async function (e) {
   e.preventDefault();
   const postContent = document.getElementById("postText").value;
-  const postImg = document.getElementById("postImage").value;
+  const postImg = document.getElementById("postImage").files[0];
   const docRef = collection(db, "posts");
   console.log(postContent, postImg);
-  addDoc(docRef, {
-    postContent: postContent,
-    postImg: postImg,
-    userId: uid,
-    postDate: new Date(),
-  })
-    .then((docRef) => {
+  let postImgUrl = '';
+  if (postImg){
+    try {
+      const imgRef = ref(storage, `postImages/${Date.now()}_${postImg.name}`);
+      await uploadBytes(imgRef, postImg);
+      postImgUrl = await getDownloadURL(imgRef);
+    } catch (error) {
+      console.error("error uploading the image", error);
+      return; //exit if theres an error
+    }
+  }
+
+  try {
+    const newDocRef = await addDoc(docRef, {
+      postContent: postContent,
+      postImg: postImgUrl,
+      userId: uid,
+      postDate: new Date(),
+    });
       console.log("Document written with Id: ", docRef.id);
       document.getElementById("postText").value = "";
       document.getElementById("postImage").value = "";
       renderPost(); // After adding, re-render the posts
-    })
-    .catch((error) => {
+  } catch(error) {
       console.log(error);
-    });
+    };
 });
 
 // Event listener for logging out
@@ -159,4 +159,21 @@ document.getElementById("logoutBtn").addEventListener("click", function () {
     .catch((error) => {
       console.log(error);
     });
+});
+
+
+// Update post
+document.getElementById('updatePostButton').addEventListener('click', async function () {
+  const postId = this.getAttribute('data-post-id');
+  const newContent = document.getElementById('updateContent').value;
+  try {
+      await updateDoc(doc(db, 'posts', postId), {
+          postContent: newContent
+      });
+      console.log('Post updated successfully');
+      document.getElementById('updateModal').style.display = 'none';
+      renderPost();
+  } catch (error) {
+      console.error('Error updating document: ', error);
+  }
 });

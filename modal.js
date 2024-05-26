@@ -49,3 +49,29 @@ document.getElementById("openSettingModal").addEventListener("click", function(e
   console.log("testing");
   openSettingsModal();
 });
+
+
+
+// Function to open post update modal
+function openUpdateModal() {
+  document.getElementById("updateModal").style.display = "block";
+};
+
+// Close the modal when clicking on the close button (x)
+document.getElementById("updateClose").addEventListener("click", function() {
+  document.getElementById("updateModal").style.display = "none";
+});
+
+// Close the modal when clicking outside of it
+window.addEventListener("click", function(event) {
+  if (event.target === document.getElementById("updateModal")) {
+      document.getElementById("updateModal").style.display = "none";
+  }
+});
+
+// // Open modal when clicking on "Post" link in navbar
+// document.getElementById("openUpdateModal").addEventListener("click", function(event) {
+//   event.preventDefault(); 
+//   console.log("testing");
+//   openUpdateModal();
+// });

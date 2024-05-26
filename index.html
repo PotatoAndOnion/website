@@ -77,9 +77,20 @@
             <h2>Add Post</h2>
             <form id="postForm">
                 <input type="text" id="postText" placeholder="Enter your post content">
-                <input type="text" id="postImage" placeholder="Add your image (URL only)">
+                <input type="file" id="postImage" placeholder="Add your image (URL only)">
                 <button id="addPost" type="submit">Post</button>
             </form>
+        </div>
+    </div>
+
+
+    <!-- Modal for post update-->
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <span id="updateClose" class="close">&times;</span>
+            <h2>Edit Post</h2>
+            <input type="text" id="updateContent" placeholder="Update your text here">
+            <button id="updatePostButton">Update Post</button>
         </div>
     </div>
 
