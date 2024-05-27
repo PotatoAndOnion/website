@@ -137,16 +137,16 @@ input:focus ~ label, input:valid ~ label {
     text-decoration: none;
     color: white;
     margin-left: 10px;
-    border-bottom: 2px solid transparent; /* Add an underline effect */
-    transition: border-color 0.3s ease; /* Add transition effect for underline */
-    display: inline-block; /* Ensure links are displayed inline */
-    margin-right: 10px; /* Add space between links */
+    border-bottom: 2px solid transparent; 
+    transition: border-color 0.3s ease; 
+    display: inline-block;
+    margin-right: 10px;
 }
 
 .signin-form a:hover {
-    border-color: #ffffff; /* Change underline color on hover */
+    border-color: #ffffff; 
 }
 
 .signin-form .home {
-    margin-left: 300px; /* Adjust margin for the "Home" link */
+    margin-left: 300px;
 }

@@ -71,7 +71,7 @@ const renderPost = async () => {
     let delElement =
       uid === post.userId
         ? `<button class="deleteBtn" postId=${docSnapshot.id}>Delete</button>
-        <button onclick="openUpdateModal('${docSnapshot.id}')">Update</button>`
+        <button class="updateBtn" onclick="openUpdateModal('${docSnapshot.id}')">Update</button>`
         : "";
     
     let postDiv = document.createElement("div");
@@ -162,18 +162,42 @@ document.getElementById("logoutBtn").addEventListener("click", function () {
 });
 
 
+
+
+
+
+
+const search = window.location.search;
+const params = new URLSearchParams(search);
+const id = params.get("id");
+
+if (!id) {
+  console.error("No ID found in URL parameters.");
+  // Optionally handle the missing ID scenario, like redirecting the user or displaying an error message.
+}
+
 // Update post
-document.getElementById('updatePostButton').addEventListener('click', async function () {
-  const postId = this.getAttribute('data-post-id');
-  const newContent = document.getElementById('updateContent').value;
-  try {
-      await updateDoc(doc(db, 'posts', postId), {
-          postContent: newContent
-      });
-      console.log('Post updated successfully');
-      document.getElementById('updateModal').style.display = 'none';
-      renderPost();
-  } catch (error) {
-      console.error('Error updating document: ', error);
+document.getElementById("updatePostButton").addEventListener("click", function (e) {
+  e.preventDefault();
+  
+  const postContent = document.getElementById("updateContent").value; 
+  
+  if (!currentPostId) {
+    console.error("Cannot update post: ID is null.");
+    return; // Exit the function if ID is null
   }
+  
+  const docRef = doc(db, "posts", currentPostId);
+  updateDoc(docRef, {
+    postContent: postContent,
+    updated_at: new Date()
+  })
+  .then(() => {
+    console.log("Post updated successfully");
+    document.getElementById("updateModal").style.display = "none";
+    renderPost();
+  })
+  .catch((error) => {
+    console.error("Error updating post", error);
+  });
 });

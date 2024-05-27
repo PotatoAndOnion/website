@@ -53,18 +53,24 @@ document.getElementById("openSettingModal").addEventListener("click", function(e
 
 
 // Function to open post update modal
-function openUpdateModal() {
+let currentPostId = null;
+
+function openUpdateModal(postId) {
+  currentPostId = postId;
+  console.log(currentPostId);
   document.getElementById("updateModal").style.display = "block";
 };
 
 // Close the modal when clicking on the close button (x)
 document.getElementById("updateClose").addEventListener("click", function() {
   document.getElementById("updateModal").style.display = "none";
+  currentPostId = null;
 });
 
 // Close the modal when clicking outside of it
 window.addEventListener("click", function(event) {
   if (event.target === document.getElementById("updateModal")) {
       document.getElementById("updateModal").style.display = "none";
+      currentPostId = null;
   }
 });

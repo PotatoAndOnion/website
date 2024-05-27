@@ -24,16 +24,18 @@
             </div>
         </div>
     </nav>
-    <div>
+    <div class="user-selection-section">
         <select id="user-select">
             <option value="">Select a user</option>
         </select>
         <button id="start-chat-button">Start Chat</button>
     </div>
-    <div id="chat-container" style="display:none;">
-        <div id="messages"></div>
-        <input type="text" id="message-input" placeholder="Type a message">
-        <button id="send-button">Send</button>
+    <div class="chat-container-wrapped">
+        <div id="chat-container" style="display:none;">
+            <div id="messages"></div>
+            <input type="text" id="message-input" placeholder="Type a message">
+            <button id="send-button">Send</button>
+        </div>
     </div>
     <script type="module" src="displaycred.js"></script>
     <script type="module" src="message.js"></script>
