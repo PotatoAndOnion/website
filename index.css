@@ -1,49 +1,55 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Basic Reset and Body Styling */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Updated font */
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Updated font */
     background-color: #f0f2f5;
 }
 
+/* Container */
 .container {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
 }
 
-#logoutBtn {
-    background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+/* Header */
 .header {
     padding: 20px;
     border-radius: 5px;
+    background-color: #fff; /* Added background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
 }
+
+/* Main Content */
 .main-content {
-    max-width:70%;
+    max-width: 70%;
 }
-.center-content{
+
+/* Center Content */
+.center-content {
     width: 60%;
-    margin: auto;
-    flex-grow: 1;
-    margin-top: 20px;
+    margin: 20px auto; /* Center the content and add top margin */
     padding: 20px;
-    overflow-y: auto; 
-    height: calc(100vh - 140px); 
+    overflow-y: auto;
+    height: calc(100vh - 140px);
+    background-color: #fff; /* Added background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
+    border-radius: 8px; /* Rounded corners */
 }
 
-
-
+/* Navbar */
 .navbar {
     background-color: #ffffff;
     padding: 10px;
     margin-top: 50px;
     height: 100vh;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
 }
 
 .navbar ul {
@@ -62,54 +68,66 @@ body {
     font-weight: bold;
     font-size: 22px;
 }
+
 .navbar li i {
     margin-right: 20px;
 }
 
 .navbar li a:hover {
-    color: #007bff;
+    color: #226fff; /* Changed hover color */
 }
 
+/* User Profile */
 .user-profile-pic {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
-  }
-  
-  .user-display-name {
+}
+
+.user-display-name {
     margin-right: 20px;
     font-size: 16px;
     font-weight: bold;
-  }
-  
-  #userProfile {
+}
+
+#userProfile {
     display: flex;
     align-items: center;
-  }
+}
 
+/* Left Sidebar */
 .left-sidebar {
+    width: 15%;
+    background-color: #ffffff;
+    padding: 15px;
+    overflow-y: auto;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
     border-right: 1px solid #ccc;
 }
+
+/* Footer */
 .footer {
     background-color: #ffffff;
     border-radius: 0 0 20px 20px;
     padding: 20px;
     text-align: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
 }
 
-
+/* Post Card */
 .postCard {
-    background-color: #ffffff;
-    border-radius: 7px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    background-color: transparent; /* No background color */
+    border: none; /* No border */
     margin-bottom: 20px;
     padding: 20px;
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid black; /* Add black line between posts */
 }
 
-
+/* Post Header */
 .post-header {
     display: flex;
     align-items: center;
@@ -125,21 +143,24 @@ body {
 
 .post-header p {
     margin: 0 0 0 30px;
-    color:rgba(0, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
+/* Post Content */
 .post-content {
     margin-top: 10px;
 }
 
-.post-footer {
-    display: flex;
-    align-items: center;
-}
 .post-content img {
     max-width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
+}
+
+/* Post Footer */
+.post-footer {
+    display: flex;
+    align-items: center;
 }
 
 .post-footer i {
@@ -150,143 +171,34 @@ body {
     margin-right: 10px;
     cursor: pointer;
     font-size: 25px;
+    transition: color 0.3s;
 }
 
 .post-footer i:hover {
     color: #0056b3;
 }
 
-
-.left-sidebar {
-    width: 15%;
-    background-color: #ffffff;
-    padding: 15px;
-    overflow-y: auto; 
-}
-.right-sidebar{
-    width: 15%;
-
-}
-
-
-.left-sidebar {
-    height: auto; 
-}
-
-.right-sidebar {
-    height: auto; 
-}
-
+/* Scrollbar */
 ::-webkit-scrollbar {
-    width: 0; 
+    width: 0;
     background: transparent;
 }
 
-/* Basic Reset and Body Styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-  }
-  
-  /* Modal Styling */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  }
-  
-  .modal-content {
-    background-color: #fff;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    max-width: 500px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-  }
-  
-  /* Close Button */
-  .settingsClose,
-  .postClose {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .settingsClose:hover,
-  .settingsClose:focus,
-  .postClose:hover,
-  .postClose:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  /* Form and Button Styling */
-  .modal-content form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .modal-content input[type="text"] {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .modal-content button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
-  .modal-content button:hover {
-    background-color: #0056b3;
-  }
-#logoutBtn:hover {
-    background-color: #d32f2f;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-/* Modal Content Styling */
+/* Modal Content */
 .modal-content {
     background-color: #fff;
     margin: 15% auto;
@@ -299,7 +211,8 @@ body {
     text-align: center;
 }
 
-/* Close Button Styling */
+/* Close Button */
+.settingsClose,
 .postClose {
     color: #aaa;
     float: right;
@@ -307,6 +220,8 @@ body {
     font-weight: bold;
 }
 
+.settingsClose:hover,
+.settingsClose:focus,
 .postClose:hover,
 .postClose:focus {
     color: #000;
@@ -314,15 +229,14 @@ body {
     cursor: pointer;
 }
 
-/* Form Styling */
-#postForm {
+/* Form and Button Styling */
+.modal-content form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Text Input Styling */
-#postText {
+.modal-content input[type="text"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -330,18 +244,7 @@ body {
     border-radius: 4px;
 }
 
-/* File Input Styling */
-#postImage {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* Button Styling */
-#addPost {
+.modal-content button {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -353,35 +256,46 @@ body {
     transition: background-color 0.3s;
 }
 
-#addPost:hover {
+.modal-content button:hover {
     background-color: #0056b3;
 }
 
+#logoutBtn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
+#logoutBtn:hover {
+    background-color: #d32f2f;
+}
 
 /* Delete and Update Button Styling */
 .deleteBtn,
 .updateBtn {
-    background-color: transparent; 
+    background-color: transparent;
     color: #333;
     padding: 4px 8px;
-    border: 1px solid #333; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    font-size: 13px; 
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.deleteBtn:hover{
-    background-color: #e98484; /* Light gray background on hover */
+.deleteBtn:hover {
+    background-color: #e98484;
 }
 
 .updateBtn:hover {
-    background-color: #848ee9; /* Light gray background on hover */
+    background-color: #848ee9;
 }
 
 /* Adjust margin between buttons */
 .deleteBtn + .updateBtn {
     margin-left: 5px;
 }
-
