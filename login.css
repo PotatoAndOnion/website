@@ -150,3 +150,14 @@ input:focus ~ label, input:valid ~ label {
 .signin-form .home {
     margin-left: 300px;
 }
+
+
+.upload {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.upload label {
+    margin-right: 10px;
+    font-weight: bold;
+}

@@ -120,6 +120,14 @@ document.getElementById("addPost").addEventListener("click",async function (e) {
   e.preventDefault();
   const postContent = document.getElementById("postText").value;
   const postImg = document.getElementById("postImage").files[0];
+
+  // Validation: Check if fields are empty
+  if (!postContent || !postImg) {
+    alert("Please fill in both fields.");
+    return; // Exit if validation fails
+  }
+
+
   const docRef = collection(db, "posts");
   console.log(postContent, postImg);
   let postImgUrl = '';
